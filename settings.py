@@ -12,6 +12,9 @@ MONGO_PASSWORD = 'sgxtracker'
 MONGO_DBNAME = 'sgx_tracker'
 
 ITEM_METHODS = ['GET', 'DELETE']
+ALLOW_UNKNOWN = True
+X_DOMAINS = '*'
+X_HEADERS = ['Authorization','Content-type']
 
 schema = {
     # Schema definition, based on Cerberus grammar. Check the Cerberus project
@@ -60,8 +63,11 @@ users = {
 
     # most global settings can be overridden at resource level
     'resource_methods': ['GET', 'POST'],
-
+    'allow_unknown': False,
     'schema': schema
 }
 
-DOMAIN = {'users': users,}
+DOMAIN = {'users': users,
+          'data': {},
+          'date': {}
+         }
